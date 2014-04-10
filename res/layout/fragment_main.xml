@@ -5,41 +5,83 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="135dp"
-            android:layout_weight="0.38"
-            android:src="@drawable/abc_ab_bottom_solid_dark_holo" />
+        android:layout_height="wrap_content"
+        android:background="@color/color_trust"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp" >
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.38"
-            android:orientation="vertical" >
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="5dp" >
+
+            <ImageView
+                android:id="@+id/userProfileImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal|center"
+                android:src="@drawable/default_photo" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/userProfileNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="양지웅"
+                android:textColor="@color/color_white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:orientation="vertical"
+            android:paddingBottom="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp" >
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/gradeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Medium Text"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="Trust"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/color_white" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/verifyDateText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:layout_gravity="center"
+                android:text="2014년 1월 2일 인증됨"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/color_white"
+                android:textSize="10sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp"
+                android:background="@color/color_white_alpha30" >
+
+                <TextView
+                    android:id="@+id/detailInfoText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="오늘은 방문자 수가 많으니 주의하세요. 거래시 반드시 [이름]을 확인하세요. 개인거래는 주의가필요합니다!"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/color_white"
+                    android:textSize="10sp" />
+
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -50,56 +92,69 @@
         android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/reconfirm_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_weight="8"
+            android:background="@color/color_less_black"
+            android:text="재인증요청"
+            android:textColor="@color/color_white"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/color_less_black"
+            android:src="@drawable/btn_partition" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/trade_history_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_weight="8"
+            android:background="@color/color_less_black"
+            android:text="거래내역보기"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/search_result_button" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            layout="@layout/block_today" />
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            layout="@layout/block_location" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            layout="@layout/block_watch" />
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            layout="@layout/block_notify" />
 
     </LinearLayout>
 
@@ -107,14 +162,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
     </LinearLayout>
     
 </LinearLayout>
