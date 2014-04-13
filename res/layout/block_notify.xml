@@ -28,11 +28,11 @@
 
     <TextView
         android:id="@+id/notifyBlockValueText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_gravity="center_vertical|center_horizontal|center"
         android:background="@drawable/bg_notify"
-        android:padding="40dp"
+        android:gravity="center"
         android:text="0"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="30sp" />

@@ -23,16 +23,14 @@
             android:text="Today"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/color_touch_block_string" />
-
     </LinearLayout>
 
     <TextView
         android:id="@+id/todayBlockValueText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|center_horizontal|center"
-        android:background="@drawable/bg_today"
-        android:padding="40dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+		android:background="@drawable/bg_today"
         android:text="0"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="30sp" />

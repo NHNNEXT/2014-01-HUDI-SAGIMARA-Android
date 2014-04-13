@@ -28,11 +28,11 @@
 
     <TextView
         android:id="@+id/watchBlockValueText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|center_horizontal|center"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_horizontal|center"
         android:background="@drawable/bg_watch"
-        android:padding="40dp"
+        android:gravity="center"
         android:text="2"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="30sp" />
