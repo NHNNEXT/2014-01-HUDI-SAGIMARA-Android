@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -25,7 +26,6 @@ public class SearchView extends ActionBarActivity{
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
-
 	}
 
 	/**
@@ -42,6 +42,7 @@ public class SearchView extends ActionBarActivity{
 
 			View rootView = inflater.inflate(R.layout.search_fragment,
 					container, false);
+			
 			return rootView;
 		}
 

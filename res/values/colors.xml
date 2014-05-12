@@ -2,6 +2,7 @@
 <resources>
 	<color name="color_dangerous">#DF5A49</color>
 	<color name="color_trust">#45b29d</color>
+	<color name="color_warning">#FF9600</color>
 	
 	<color name="color_black">#000000</color>
 	<color name="color_less_black">#333333</color>
