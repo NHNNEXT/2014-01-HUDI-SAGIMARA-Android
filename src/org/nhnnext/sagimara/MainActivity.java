@@ -1,9 +1,11 @@
 package org.nhnnext.sagimara;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,7 +51,7 @@ public class MainActivity extends ActionBarActivity {
 	 */
 	public static class PlaceholderFragment extends Fragment {
 		String phoneNumber;
-
+		Context mContext;
 		public PlaceholderFragment() {
 		}
 
@@ -58,13 +60,17 @@ public class MainActivity extends ActionBarActivity {
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_main, container,
 					false);
-
 			Intent i = getActivity().getIntent();
 
+			this.mContext = getActivity().getApplicationContext();
 			phoneNumber = i.getStringExtra("phoneNumber");
+			
 			new ServerLoadProxy(getActivity().getApplicationContext(), rootView)
 					.execute(phoneNumber);
-
+			
+			TelephonyManager telManager = (TelephonyManager)this.mContext.getSystemService(mContext.TELEPHONY_SERVICE); 
+			String phoneNum = telManager.getLine1Number();
+			
 			return rootView;
 		}
 	}
