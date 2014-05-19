@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.telephony.TelephonyManager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -71,8 +74,33 @@ public class MainActivity extends ActionBarActivity {
 			TelephonyManager telManager = (TelephonyManager)this.mContext.getSystemService(mContext.TELEPHONY_SERVICE); 
 			String phoneNum = telManager.getLine1Number();
 			
+			
+			Button reconfirmButton = (Button)rootView.findViewById(R.id.reconfirm_button);
+			reconfirmButton.setOnClickListener(reconfirmClick);
+			Button tradeHistoryButton = (Button)rootView.findViewById(R.id.trade_history_button);
+			tradeHistoryButton.setOnClickListener(trade_history_button);
+			
 			return rootView;
 		}
+		
+		Button.OnClickListener reconfirmClick = new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Toast toast = Toast.makeText(getActivity().getApplicationContext(), "인증요청 하셨습니다.", Toast.LENGTH_SHORT);
+				toast.setGravity(Gravity.TOP, 0, 0);
+				toast.show();
+			}
+		};
+		Button.OnClickListener trade_history_button = new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Toast toast = Toast.makeText(getActivity().getApplicationContext(), "거래내역보기 클릭하셨습니다.", Toast.LENGTH_SHORT);
+				toast.setGravity(Gravity.TOP, 0, 0);
+				toast.show();
+			}
+		};
 	}
 
 }
