@@ -3,5 +3,5 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.nhnnext.sagimara.MainActivity"
+    tools:context="org.nhnnext.sagimara.UserInfoView"
     tools:ignore="MergeRootFrame" />

@@ -1,15 +1,16 @@
 package org.nhnnext.sagimara;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -26,6 +27,10 @@ public class SearchView extends ActionBarActivity{
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		
+		TelephonyManager telManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE); 
+		SharedDatas.PHONE_NUMBER = telManager.getLine1Number();
+		
 	}
 
 	/**
@@ -52,9 +57,6 @@ public class SearchView extends ActionBarActivity{
 			
 			searchButton = (Button) getActivity().findViewById(R.id.searchButton);
 			searchPhoneNumberText = (EditText) getActivity().findViewById(R.id.searchPhoneNumberText);
-			Log.i("sagimara", "Fragment : " + R.id.searchButton);
-			Log.i("sagimara", "Fragment : " + searchButton);
-			Log.i("sagimara", "Fragment : " + searchPhoneNumberText);
 			
 			searchButton.setOnClickListener(this);
 
@@ -67,7 +69,7 @@ public class SearchView extends ActionBarActivity{
 			switch (v.getId()) {
 			case R.id.searchButton:
 				Log.i("sagimara", "searchButton Click!");
-				Intent i = new Intent(getActivity(), MainActivity.class);
+				Intent i = new Intent(getActivity(), UserInfoView.class);
 				i.putExtra("phoneNumber", searchPhoneNumberText.getText().toString());
 				startActivity(i);
 				break;
