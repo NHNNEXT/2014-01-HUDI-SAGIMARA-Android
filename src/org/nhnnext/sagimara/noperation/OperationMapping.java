@@ -7,6 +7,7 @@ public class OperationMapping {
 		private static final long serialVersionUID = -3286315173722334990L;
 	{
 		put("getUserInfo", new GetUserInfoOperation("/test"));
+		put("requestVerification", new RequestVerificationOperation("/insert/RequestData"));
 	}};
 	
 	public NOperation getNOperation(String operationName) {

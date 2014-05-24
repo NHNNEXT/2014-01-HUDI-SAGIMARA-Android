@@ -78,44 +78,4 @@ public class HTTPPostOperation extends AsyncTask<String, Integer, JSONObject> {
 		super.onCancelled();
 	}
 
-	public JSONObject requestVerification(String phoneNumber) {
-		Log.i("Server Response", "requestVerification ");
-		try {
-
-			String url = SharedDatas.SERVER_URL + "/test";
-
-			HttpClient client = new DefaultHttpClient();
-			HttpPost post = new HttpPost(url);
-
-			List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
-			urlParameters.add(new BasicNameValuePair("from", phoneNumber));
-			urlParameters.add(new BasicNameValuePair("to",
-					SharedDatas.PHONE_NUMBER));
-
-			SimpleDateFormat dateFormat = new SimpleDateFormat(
-					"yyyy/MM/dd HH:mm:ss");
-			Calendar cal = Calendar.getInstance();
-			String date = dateFormat.format(cal.getTime());
-			urlParameters.add(new BasicNameValuePair("date", date));
-			Log.i("Server Response", "Date : " + date);
-			post.setEntity(new UrlEncodedFormEntity(urlParameters));
-
-			HttpResponse response = client.execute(post);
-			BufferedReader rd = new BufferedReader(new InputStreamReader(
-					response.getEntity().getContent()));
-
-			StringBuffer result = new StringBuffer();
-			String line = "";
-			while ((line = rd.readLine()) != null) {
-				result.append(line);
-			}
-
-			JSONObject jObject = new JSONObject(result.toString());
-			return jObject;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-
-	}
 }

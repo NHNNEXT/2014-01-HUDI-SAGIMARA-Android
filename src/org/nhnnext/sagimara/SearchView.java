@@ -30,7 +30,7 @@ public class SearchView extends ActionBarActivity{
 		
 		TelephonyManager telManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE); 
 		SharedDatas.PHONE_NUMBER = telManager.getLine1Number();
-		
+		SharedDatas.PHONE_NUMBER = "2222"; 
 	}
 
 	/**

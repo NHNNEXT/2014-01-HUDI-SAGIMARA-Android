@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
@@ -30,7 +31,6 @@ public class UserInfoView extends ActionBarActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
@@ -51,7 +51,7 @@ public class UserInfoView extends ActionBarActivity {
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
-	public static class PlaceholderFragment extends Fragment {
+	public static class PlaceholderFragment extends Fragment implements OnClickListener{
 		String phoneNumber;
 		Context mContext;
 		public PlaceholderFragment() {
@@ -71,31 +71,34 @@ public class UserInfoView extends ActionBarActivity {
 					.execute("getUserInfo", phoneNumber);
 			
 			Button reconfirmButton = (Button)rootView.findViewById(R.id.reconfirm_button);
-			reconfirmButton.setOnClickListener(reconfirmClick);
+			reconfirmButton.setOnClickListener(this);
 			Button tradeHistoryButton = (Button)rootView.findViewById(R.id.trade_history_button);
-			tradeHistoryButton.setOnClickListener(trade_history_button);
+			tradeHistoryButton.setOnClickListener(this);
 			
 			return rootView;
 		}
 		
-		Button.OnClickListener reconfirmClick = new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Toast toast = Toast.makeText(getActivity().getApplicationContext(), "인증요청 하셨습니다.", Toast.LENGTH_SHORT);
+		@Override
+		public void onClick(View v) {
+			Toast toast;
+			switch (v.getId()) {
+			case R.id.reconfirm_button:
+				toast = Toast.makeText(getActivity().getApplicationContext(), "인증요청 하셨습니다.", Toast.LENGTH_SHORT);
 				toast.setGravity(Gravity.TOP, 0, 0);
 				toast.show();
-			}
-		};
-		Button.OnClickListener trade_history_button = new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Toast toast = Toast.makeText(getActivity().getApplicationContext(), "거래내역보기 클릭하셨습니다.", Toast.LENGTH_SHORT);
+				
+				new HTTPPostOperation(getActivity().getApplicationContext(), getView()).execute("requestVerification", phoneNumber);
+				break;
+			case R.id.trade_history_button:
+				toast = Toast.makeText(getActivity().getApplicationContext(), "거래내역보기 클릭하셨습니다.", Toast.LENGTH_SHORT);
 				toast.setGravity(Gravity.TOP, 0, 0);
 				toast.show();
+				break;
+			default:
+				break;
 			}
-		};
+			
+		}
 	}
 
 }
