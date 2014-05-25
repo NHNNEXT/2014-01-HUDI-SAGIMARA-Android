@@ -1,5 +1,7 @@
 package org.nhnnext.sagimara;
 
+import org.nhnnext.sagimara.noperation.HTTPPostOperation;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;

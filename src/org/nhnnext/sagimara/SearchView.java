@@ -1,7 +1,10 @@
 package org.nhnnext.sagimara;
 
+import org.nhnnext.sagimara.noperation.HTTPPostOperation;
+
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -30,7 +33,9 @@ public class SearchView extends ActionBarActivity{
 		
 		TelephonyManager telManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE); 
 		SharedDatas.PHONE_NUMBER = telManager.getLine1Number();
-		SharedDatas.PHONE_NUMBER = "2222"; 
+		SharedDatas.PHONE_NUMBER = "1111";
+		
+		
 	}
 
 	/**
@@ -48,6 +53,9 @@ public class SearchView extends ActionBarActivity{
 			View rootView = inflater.inflate(R.layout.search_fragment,
 					container, false);
 			
+			new HTTPPostOperation(getActivity().getApplicationContext(), rootView)
+			.execute("getRequestAboutMe", SharedDatas.PHONE_NUMBER);
+
 			return rootView;
 		}
 

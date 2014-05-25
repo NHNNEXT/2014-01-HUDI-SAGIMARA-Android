@@ -1,4 +1,4 @@
-package org.nhnnext.sagimara;
+package org.nhnnext.sagimara.noperation;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -16,9 +16,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.nhnnext.sagimara.noperation.GetUserInfoOperation;
-import org.nhnnext.sagimara.noperation.NOperation;
-import org.nhnnext.sagimara.noperation.OperationMapping;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -42,9 +39,6 @@ public class HTTPPostOperation extends AsyncTask<String, Integer, JSONObject> {
 	// params[...] 인자값
 	@Override
 	protected JSONObject doInBackground(String... params) {
-		//JSONObject result = new JSONObject();
-		//String phoneNumber = params[0];
-		//jsonResult = getUserProfileAsJSON(phoneNumber);
 		OperationMapping operationMapping = new OperationMapping();
 		String operationName = params[0];
 		Log.e("HTTPPostOperation", "opreation name : "+operationName);
