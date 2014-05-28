@@ -1,6 +1,7 @@
 package org.nhnnext.sagimara.noperation;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,28 +22,27 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 
-public class RequestVerificationOperation implements NOperation{
+public class InsertLocationForVerificationOperation implements NOperation {
 
 	String operationURL;
-	
-	public RequestVerificationOperation(String operationURL){
+
+	public InsertLocationForVerificationOperation(String operationURL) {
 		this.operationURL = operationURL;
 	}
 
 	@Override
 	public JSONObject run(String... params) {
-		Log.i("Server Response", "requestVerification params : "+params[1] + " : " + SharedDatas.PHONE_NUMBER);
+		Log.i("Server Response", "insertPhotoForVerification params : ");
 		try {
 
 			String url = SharedDatas.SERVER_URL + operationURL;
-			String phoneNumber = params[1];
 			HttpClient client = new DefaultHttpClient();
 			HttpPost post = new HttpPost(url);
 
 			List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
-			urlParameters.add(new BasicNameValuePair("to", phoneNumber));
-			urlParameters.add(new BasicNameValuePair("from",
+			urlParameters.add(new BasicNameValuePair("id",
 					SharedDatas.PHONE_NUMBER));
+			urlParameters.add(new BasicNameValuePair("location", SharedDatas.LOCATION));
 
 			SimpleDateFormat dateFormat = new SimpleDateFormat(
 					"yyyy/MM/dd HH:mm:ss");
@@ -72,7 +72,8 @@ public class RequestVerificationOperation implements NOperation{
 
 	@Override
 	public void doPostRun(JSONObject jsonResult, Context context, View view) {
-		Log.i("RequestVerificationOperation", "doPostRun in RequestVerification");
+		Log.i("RequestVerificationOperation",
+				"doPostRun in RequestVerification");
 	}
 
 }

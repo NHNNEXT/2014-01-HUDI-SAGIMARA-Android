@@ -1,16 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/color_dangerous" >
-
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/searchPhoneNumberText"
-        android:layout_centerHorizontal="true"
-        android:text="Search"
-        android:textColor="@color/color_white" />
+    android:background="@color/color_black" >
 
     <EditText
         android:id="@+id/searchPhoneNumberText"
@@ -37,5 +28,23 @@
         android:text="SAGIMARA"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/color_trust" />
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchPhoneNumberText"
+        android:layout_centerHorizontal="true"
+        android:text="Search"
+        android:textColor="@color/color_white" />
+
+    <Button
+        android:id="@+id/pushAlarmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:text="0" />
 
 </RelativeLayout>

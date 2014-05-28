@@ -1,10 +1,10 @@
 package org.nhnnext.sagimara;
 
 import org.nhnnext.sagimara.noperation.HTTPPostOperation;
+import org.nhnnext.sagimara.utility.SharedDatas;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -18,8 +18,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class SearchView extends ActionBarActivity{
-	public static Button searchButton;
-	public static EditText searchPhoneNumberText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +31,16 @@ public class SearchView extends ActionBarActivity{
 		
 		TelephonyManager telManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE); 
 		SharedDatas.PHONE_NUMBER = telManager.getLine1Number();
-		SharedDatas.PHONE_NUMBER = "1111";
-		
-		
+		//TEST용도
+		SharedDatas.PHONE_NUMBER = "3333";
 	}
 
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
 	public static class PlaceholderFragment extends Fragment implements OnClickListener{
-		
+		public Button searchButton, pushAlarmButton;
+		public EditText searchPhoneNumberText;
 		public PlaceholderFragment() {
 		}
 
@@ -53,8 +51,6 @@ public class SearchView extends ActionBarActivity{
 			View rootView = inflater.inflate(R.layout.search_fragment,
 					container, false);
 			
-			new HTTPPostOperation(getActivity().getApplicationContext(), rootView)
-			.execute("getRequestAboutMe", SharedDatas.PHONE_NUMBER);
 
 			return rootView;
 		}
@@ -65,7 +61,9 @@ public class SearchView extends ActionBarActivity{
 			
 			searchButton = (Button) getActivity().findViewById(R.id.searchButton);
 			searchPhoneNumberText = (EditText) getActivity().findViewById(R.id.searchPhoneNumberText);
+			pushAlarmButton = (Button) getActivity().findViewById(R.id.pushAlarmButton);
 			
+			pushAlarmButton.setOnClickListener(this);
 			searchButton.setOnClickListener(this);
 
 		}
@@ -74,17 +72,32 @@ public class SearchView extends ActionBarActivity{
 		public void onClick(View v) {
 
 			Log.i("sagimara", "Listener ON");
+			Intent intent;
 			switch (v.getId()) {
 			case R.id.searchButton:
 				Log.i("sagimara", "searchButton Click!");
-				Intent i = new Intent(getActivity(), UserInfoView.class);
-				i.putExtra("phoneNumber", searchPhoneNumberText.getText().toString());
-				startActivity(i);
+				intent = new Intent(getActivity(), UserInfoView.class);
+				intent.putExtra("phoneNumber", searchPhoneNumberText.getText().toString());
+				startActivity(intent);
 				break;
-
+			
+			case R.id.pushAlarmButton:
+				Log.i("sagimara", "pushAlarmButton");
+				intent = new Intent(getActivity(), VerificationSendView.class);
+				startActivity(intent);
+				break;
+				
 			default:
 				break;
 			}
+			
+		}
+
+		@Override
+		public void onResume() {
+			super.onResume();
+			new HTTPPostOperation(getActivity().getApplicationContext(), getView())
+			.execute("getRequestAboutMe", SharedDatas.PHONE_NUMBER);
 			
 		}
 	}

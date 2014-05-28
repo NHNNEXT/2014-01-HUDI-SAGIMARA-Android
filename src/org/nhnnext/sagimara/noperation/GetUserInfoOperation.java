@@ -15,7 +15,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.nhnnext.sagimara.R;
-import org.nhnnext.sagimara.SharedDatas;
+import org.nhnnext.sagimara.utility.SharedDatas;
 
 import android.content.Context;
 import android.util.Log;

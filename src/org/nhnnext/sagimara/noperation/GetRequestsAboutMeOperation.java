@@ -15,17 +15,19 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.nhnnext.sagimara.SharedDatas;
+import org.nhnnext.sagimara.R;
+import org.nhnnext.sagimara.utility.SharedDatas;
 
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
-public class GetRequestsAboutMe implements NOperation {
+public class GetRequestsAboutMeOperation implements NOperation {
 
 	String operationURL;
 	
-	public GetRequestsAboutMe(String operationURL){
+	public GetRequestsAboutMeOperation(String operationURL){
 		this.operationURL = operationURL;
 	}
 
@@ -74,6 +76,9 @@ public class GetRequestsAboutMe implements NOperation {
 		try {
 			requestArray = jsonResult.getJSONArray("data");
 			numOfRequest = requestArray.length();
+			Button pushAlarmButton = (Button)view.findViewById(R.id.pushAlarmButton);
+			pushAlarmButton.setText(""+numOfRequest);
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

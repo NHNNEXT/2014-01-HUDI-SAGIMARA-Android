@@ -8,8 +8,9 @@ public class OperationMapping {
 	{
 		put("getUserInfo", new GetUserInfoOperation("/test"));
 		put("requestVerification", new RequestVerificationOperation("/insert/RequestData"));
-		put("getRequestAboutMe", new GetRequestsAboutMe("/push/alarm"));
-		
+		put("getRequestAboutMe", new GetRequestsAboutMeOperation("/push/alarm"));
+		put("insertPhoto", new InsertPhohoForVerificationOperation("/insert/photoData"));
+		put("insertLocation", new InsertLocationForVerificationOperation("/insert/locationData"));
 	}};
 	
 	public NOperation getNOperation(String operationName) {
